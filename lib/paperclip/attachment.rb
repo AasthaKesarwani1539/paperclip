@@ -302,8 +302,7 @@ module Paperclip
     # lives in the <attachment>_created_at attribute of the model.
     def created_at
       if able_to_store_created_at?
-        time = instance_read(:created_at)
-        time && time.to_f.to_i
+        Time.zone.parse(instance_read(:created_at).to_s).to_f.to_i
       end
     end
 
